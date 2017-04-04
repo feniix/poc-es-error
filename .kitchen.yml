@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+  customize:
+    # set nat network to something other than 10.0.2.x
+    # this is so routing to internal dev network works
+    natnet1: "192.168/16"
+    # https://github.com/mitchellh/vagrant/issues/7648
+    cableconnected1: "on"
+
+provisioner:
+  name: chef_zero
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'warn' %>
+
+platforms:
+  - name: centos-7.3
+
+suites:
+  - name: default
+    run_list:
+      - recipe[poc_es::default]
+    attributes:

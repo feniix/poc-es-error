@@ -1,0 +1,11 @@
+name 'poc_es'
+maintainer 'Sebastian Otaegui'
+maintainer_email 'sebastian@spantree.net'
+license 'all_rights'
+description 'Installs/Configures poc_es'
+long_description 'Installs/Configures poc_es'
+version '0.1.0'
+
+depends 'elasticsearch'
+depends 'java'
+depends 'sysctl'
