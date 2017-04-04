@@ -23,6 +23,11 @@ node.default['poc_es']['config'].tap do |config|
   config['network.publish_host'] = node['ipaddress']
 end
 
+template 'elasticsearch.in.sh-elasticsearch' do
+  path '/etc/elasticsearch/elasticsearch.yml'
+  action :nothing
+end
+
 elasticsearch_plugin 'x-pack' do
   instance_name 'escluster'
   action :install
