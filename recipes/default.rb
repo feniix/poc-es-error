@@ -22,6 +22,10 @@ node.default['poc_es']['config'].tap do |config|
   config['network.publish_host'] = node['ipaddress']
 end
 
+elasticsearch_service 'elasticsearch' do
+  service_actions [ :start, :enable ]
+end
+
 elasticsearch_plugin 'x-pack' do
   action :install
 end
@@ -38,7 +42,3 @@ elasticsearch_configure 'elasticsearch' do
   configuration(node['poc_es']['config'])
 end
 
-delete_resource(:elasticsearch_service, 'elasticsearch')
-elasticsearch_service 'elasticsearch' do
-  service_actions [ :start, :enable ]
-end
