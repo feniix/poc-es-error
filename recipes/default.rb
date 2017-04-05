@@ -9,7 +9,6 @@ elasticsearch_user 'elasticsearch'
 
 elasticsearch_install 'elasticsearch' do
   version '5.3.0'
-  instance_name 'escluster'
   action :install
 end
 
@@ -24,7 +23,6 @@ node.default['poc_es']['config'].tap do |config|
 end
 
 elasticsearch_plugin 'x-pack' do
-  instance_name 'escluster'
   action :install
 end
 
